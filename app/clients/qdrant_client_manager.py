@@ -18,8 +18,14 @@ class QdrantClientManager:
 
     def init_client(self):
         self.client = qdrant_client.AsyncQdrantClient(
-            f"{self.config.host}:{self.config.port}"
+            f"{self.config.host}:{self.config.port}",
+            check_compatibility=False
         )
+
+    async def close(self):
+        if self.client:
+            await self.client.close()
+        self.client = None
 
 qdrant_client_manager = QdrantClientManager(app_config.qdrant)
 

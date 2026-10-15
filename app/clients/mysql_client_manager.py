@@ -4,7 +4,7 @@ from sqlalchemy import URL, text
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker, create_async_engine
 
 from app.conf.app_config import DBConfig, app_config
-from app.models.table_info_mysql import TableInfoMySQL
+from app.models.mysql.table_info_mysql import TableInfoMySQL
 
 
 
