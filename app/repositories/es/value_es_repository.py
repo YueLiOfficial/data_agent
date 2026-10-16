@@ -50,3 +50,15 @@ class ValueESRepoSitory:
             await self.client.bulk(
                 operations=operations
             )
+
+    async def search(self, keyword: str) -> list[ValueInfoES]:
+        results = await self.client.search(
+            index=self.index_name,
+            query={
+                "match": {
+                    "value": keyword
+                }
+            }
+        )
+
+        return [ValueInfoES(**item["_source"]) for item in results["hits"]["hits"]]

@@ -43,3 +43,12 @@ class ColumnQdrantRepository:
                     for id_, payload, vecotr in zip(batch_ids, batch_payloads, batch_vectors)
                 ],
             )
+
+    async def search(self, vector: list[float]) -> list[ColumnInfoQdrant]:
+        results = await self.client.query_points(
+            self.collection_name,
+            query=vector,
+            score_threshold=0.6
+        )
+
+        return [ColumnInfoQdrant(**point.payload) for point in results.points] # type: ignore
