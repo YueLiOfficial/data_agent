@@ -34,3 +34,5 @@ class DataAgentState(TypedDict):
     recall_columns: list[ColumnInfoQdrant]
     recall_metrics: list[MetricInfoQdrant]
     recall_values: list[ValueInfoES]
+    table_infos: list[TableInfoState]
+    metric_infos: list[MetricInfoState]
