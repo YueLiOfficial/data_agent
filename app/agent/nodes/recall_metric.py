@@ -13,7 +13,7 @@ from app.models.qdrant.metric_info_qdrant import MetricInfoQdrant
 from app.prompt.load_prompt import load_prompt
 
 async def recall_metric(state: DataAgentState, runtime: Runtime[DataAgentContext]):
-    runtime.stream_writer("召回指标")
+    runtime.stream_writer({"stage": "召回指标"})
 
     try:
         query = state["query"]

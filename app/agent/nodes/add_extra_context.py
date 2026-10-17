@@ -9,7 +9,7 @@ from app.agent.context import DataAgentContext
 from langgraph.runtime import Runtime
 
 async def add_extra_context(state: DataAgentState, runtime: Runtime[DataAgentContext]):
-    runtime.stream_writer("添加额外信息")
+    runtime.stream_writer({"stage": "添加额外信息"})
 
     try:
         dw_mysql_repo = runtime.context["dw_mysql_repo"]

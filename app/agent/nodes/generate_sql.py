@@ -13,7 +13,7 @@ from langgraph.runtime import Runtime
 from app.prompt.load_prompt import load_prompt
 
 async def generate_sql(state: DataAgentState, runtime: Runtime[DataAgentContext]):
-    runtime.stream_writer("生成SQL")
+    runtime.stream_writer({"stage": "生成SQL"})
 
     try:
         query = state["query"]

@@ -7,7 +7,7 @@ from langgraph.runtime import Runtime
 from jieba.analyse import extract_tags
 
 def extract_keywords(state: DataAgentState, runtime: Runtime[DataAgentContext]):
-    runtime.stream_writer("提取关键字")
+    runtime.stream_writer({"stage": "提取关键字"})
 
     try:
         # 定义返回指定词性的元组

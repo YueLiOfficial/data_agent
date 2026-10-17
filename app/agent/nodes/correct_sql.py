@@ -13,7 +13,7 @@ from langgraph.runtime import Runtime
 from app.prompt.load_prompt import load_prompt
 
 async def correct_sql(state: DataAgentState, runtime: Runtime[DataAgentContext]):
-    runtime.stream_writer("校正SQL")
+    runtime.stream_writer({"stage": "校正SQL"})
 
     try:
         query = state["query"]

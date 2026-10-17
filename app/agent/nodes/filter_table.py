@@ -13,7 +13,7 @@ from langgraph.runtime import Runtime
 from app.prompt.load_prompt import load_prompt
 
 async def filter_table(state: DataAgentState, runtime: Runtime[DataAgentContext]):
-    runtime.stream_writer("过滤表和字段")
+    runtime.stream_writer({"stage": "过滤表和字段"})
 
     try:
         query = state["query"]

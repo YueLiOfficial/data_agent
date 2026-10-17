@@ -13,7 +13,7 @@ from app.models.qdrant.column_info_qdrant import ColumnInfoQdrant
 from app.prompt.load_prompt import load_prompt
 
 async def recall_column(state: DataAgentState, runtime: Runtime[DataAgentContext]):
-    runtime.stream_writer("召回字段")
+    runtime.stream_writer({"stage": "召回字段"})
 
     try:
         query = state["query"]

@@ -7,7 +7,7 @@ from app.agent.context import DataAgentContext
 from langgraph.runtime import Runtime
 
 async def execute_sql(state: DataAgentState, runtime: Runtime[DataAgentContext]) -> DataAgentState:
-    runtime.stream_writer("执行SQL")
+    runtime.stream_writer({"stage": "执行SQL"})
 
     try:
         sql = state["sql"]
@@ -17,7 +17,7 @@ async def execute_sql(state: DataAgentState, runtime: Runtime[DataAgentContext])
 
         logger.info(f"执行SQL成功: {result}")
 
-        runtime.stream_writer(result)
+        runtime.stream_writer({"result": result})
 
     except Exception as e:
         logger.exception(f"执行SQL失败: {e}")

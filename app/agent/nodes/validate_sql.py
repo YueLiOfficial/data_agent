@@ -6,7 +6,7 @@ from app.agent.context import DataAgentContext
 from langgraph.runtime import Runtime
 
 async def validate_sql(state: DataAgentState, runtime: Runtime[DataAgentContext]):
-    runtime.stream_writer("校验SQL")
+    runtime.stream_writer({"stage": "校验SQL"})
 
     try:
         sql = state["sql"]
