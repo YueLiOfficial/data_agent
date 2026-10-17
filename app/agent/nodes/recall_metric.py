@@ -25,7 +25,7 @@ async def recall_metric(state: DataAgentState, runtime: Runtime[DataAgentContext
         prompt = load_prompt("extend_keywords_for_metric_recall", query = query)
         messages = [HumanMessage(content=prompt)]
         chains = llm | JsonOutputParser()
-        res = chains.invoke(messages)
+        res = await chains.ainvoke(messages)
 
         # 将大模型提取的指标和jiaba分词后的词合并
         keywords = list(set(keywords + res))
