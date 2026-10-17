@@ -42,6 +42,15 @@ class DWMysqlRepository:
 
         return {"version": version, "dialect": dialect}
 
+    async def validate_sql(self, sql:str):
+        await self.session.execute(
+            text(f"explain {sql}")
+        )
+
+    async def execute_sql(self, sql: str):
+        result = await self.session.execute(text(sql))
+
+        return result.mappings().all()
         
 
 if __name__ == "__main__":

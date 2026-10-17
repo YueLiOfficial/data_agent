@@ -109,7 +109,7 @@ if __name__ == "__main__":
                 2025年各地区平均销售额
                 各个地区iPhone去年卖了多少钱
                 '''
-                state = DataAgentState(query="华北地区销售总额") # type: ignore
+                state = DataAgentState(query="各个地区iPhone去年卖了多少钱") # type: ignore
 
                 async for chunk in graph.astream(
                     input=state,
