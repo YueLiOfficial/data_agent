@@ -32,7 +32,17 @@ class DWMysqlRepository:
 
         return list(values)
 
+    async def get_db_info(self) -> dict:
+        version = await self.session.execute(
+            text("SELECT @@version")
+        )
 
+        version = version.scalar()
+        dialect = self.session.bind.dialect.name
+
+        return {"version": version, "dialect": dialect}
+
+        
 
 if __name__ == "__main__":
     
